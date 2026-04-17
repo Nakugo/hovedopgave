@@ -1,0 +1,300 @@
+:root {
+  --bg-color: #1A1C23;
+}
+
+html {
+  font-size: 20px;
+  font-family: "Sofia Sans Extra Condensed";
+  color: var(--Hvid, #F9F8F5);
+  font-style: normal;
+  line-height: normal;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0px;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 350;
+  letter-spacing: 1%;
+  margin: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 0 20px;
+  gap: 10px;
+  }
+
+.guide {
+  gap: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.guideBox {
+  border-radius: 5px;
+  border: 1px solid #F4682C;
+  background: #242424;
+  max-width: 430px;
+}
+
+.guideTxt {
+  padding: 10px 20px;
+  margin: 0px;
+}
+
+.lcd {
+  display: flex;
+  width: 480px;
+  height: auto;
+  flex-direction: column;
+  align-items: end;
+}
+
+.infoTxt.right{
+  justify-self: end;
+}
+
+.infoTxt.infoTop {
+  margin: 0px 0px 10px 0px;
+  align-content: end;
+}
+
+.infoTxt.infoBottom {
+  margin: 10px 0px 0px 0px;
+}
+
+.infoTxt{
+  max-width: 70%;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  }
+
+.infoBox{
+  display: grid;
+  grid-auto-flow: column;
+  min-height: 60px;
+}
+
+.lcdFrame {
+  width: 480px;
+  height: 320px;
+  align-items: center;
+}
+
+.lcdFrame svg {
+  overflow-clip-margin: unset;
+  overflow: visible;
+  display: none;
+}
+
+
+[data-step="start"] .startScreen { display: block; }
+[data-step="nfc"] .nfcScreen { display: block; }
+[data-step="prep"] .prepScreen { display: block; }
+[data-step="engrave"] .engraveScreen { display: block; }
+
+.startScreen {
+  display: none;
+}
+
+.nfcScreen {
+  display: none;
+}
+
+.prepScreen {
+  display: none;
+}
+
+.engraveScreen {
+  display: none;
+}
+
+#scanningArrow,
+#scanningArrow1,
+#scanningTxt,
+#keyboardArrow,
+#keyboardTxt,
+#nfcLogoArrow,
+#nfcLogoTxt,
+#firmwareArrow,
+#firmwareTxt,
+#editArrow,
+#editTxt {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none; /* Sikrer at musen ikke "fanges" af den usynlige tekst */
+}
+
+#nfcLogo, 
+#keybordIcon, 
+#nfcScanning,
+#firmware,
+#startTop,
+#backStart,
+#checkBtn,
+#backPreview,
+#engravBtn{
+  cursor: pointer;
+}
+
+:has(#nfcLogo:hover)  #nfcLogoArrow,
+:has(#nfcLogo:hover)  #nfcLogoTxt {
+  opacity: 1;
+}
+
+:has(#nfcScanning:hover) #scanningArrow,
+:has(#nfcScanning:hover) #scanningTxt {
+  opacity: 1;
+}
+
+:has(#keybordIcon:hover) #keyboardArrow,
+:has(#keybordIcon:hover) #keyboardTxt {
+  opacity: 1;
+}
+
+:has(#firmware:hover) #firmwareArrow,
+:has(#firmware:hover) #firmwareTxt {
+  opacity: 1;
+}
+
+:has(#codes:hover) #editArrow,
+:has(#codes:hover) #editTxt {
+  opacity: 1;
+}
+
+#rotateMsg {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .container {
+    align-items: center;
+  }
+
+  .guide {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+}
+
+@media (max-width: 479px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 4rem;
+    }
+
+  .lcd {
+    width: 100%;
+    height: auto;
+  }
+
+  .infoTxt {
+    max-width: 75%;
+  }
+
+  #nfcLogoArrow,
+  #nfcLogoTxt,
+  #scanningArrow1,
+  #scanningTxt,
+  #keyboardArrow,
+  #keyboardTxt,
+  #firmwareArrow,
+  #firmwareTxt,
+  #editArrow,
+  #editTxt {
+    opacity: 1;
+  }
+
+  #scanningTxt {
+    grid-row-start: 2;
+  }
+
+  .infoBottom {
+    background-color: var(--bg-color);
+  }
+
+  .lcdFrame {
+    width: 100%;
+    height: auto;
+  }
+
+  #rotateMsg {
+    display: flex; 
+    position: fixed;
+    height: fit-content;
+    bottom: 30px;
+    border: 1px solid #333;
+    background-color: #2c2c2c; 
+    width: 90%;
+    max-width: 340px; 
+    padding: 0px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .msgBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .baseIcon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+  }
+
+  .spinAnim {
+    animation: spinPhone 4.5s infinite ease-in-out;
+  }
+
+  @keyframes spinPhone {
+    0%   { transform: rotate(0deg); }
+    30%  { transform: rotate(90deg); } 
+    70%  { transform: rotate(90deg); } 
+    100% { transform: rotate(0deg); }   
+  }
+
+  #closeBtn {
+    background: none;
+    color: #aaaaaa; 
+    border: none;
+    font-size: 2rem; 
+    line-height: 1; 
+    cursor: pointer;
+    padding: 0 0 0 15px; 
+    transition: color 0.2s ease;
+  }
+
+}
